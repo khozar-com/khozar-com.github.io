@@ -1,19 +1,20 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<title>QuickCare</title>
-<meta charset="utf-8">
-<meta http-equiv="X-UA-Compatible" content="IE=edge">
-<meta name="description" content="Dr PRO template project">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" type="text/css" href="styles/bootstrap-4.1.2/bootstrap.min.css">
-<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
-<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
-<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
-<link href="plugins/jquery-datepicker/jquery-ui.css" rel="stylesheet" type="text/css">
-<link rel="stylesheet" type="text/css" href="styles/main_styles.css">
-<link rel="stylesheet" type="text/css" href="styles/responsive.css">
+	<title>QuickCare</title>
+	<meta charset="utf-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="description" content="Official QuickCare Surgery Website">
+	<meta name="viewport" content="width=device-width, initial-scale=1">
+	<script type = "text/javascript" src="js/api.js"></script>
+	<link rel="stylesheet" type="text/css" href="styles/bootstrap-4.1.2/bootstrap.min.css">
+	<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
+	<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.theme.default.css">
+	<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/animate.css">
+	<link href="plugins/jquery-datepicker/jquery-ui.css" rel="stylesheet" type="text/css">
+	<link rel="stylesheet" type="text/css" href="styles/main_styles.css">
+	<link rel="stylesheet" type="text/css" href="styles/responsive.css">
 </head>
 <body>
 
@@ -35,11 +36,11 @@
 			<!-- Main Navigation -->
 			<nav class="main_nav">
 				<ul class="d-flex flex-row align-items-center justify-content-start">
-					<li  class="active"><a href="index.php">Home</a></li>
+					<li  class="active"><a href="index.html">Home</a></li>
 					<li><a href="about.html">About us</a></li>
 					<li><a href="services.html">Services</a></li>
 					<li><a href="doctors.html">Doctors</a></li>
-					<li><a href="contact.php">Contact us</a></li>
+					<li><a href="contact.html">Contact us</a></li>
 				</ul>
 			</nav>
 			<div class="header_extra d-flex flex-row align-items-center justify-content-end ml-auto">
@@ -73,11 +74,11 @@
 		<div class="menu_close_container"><div class="menu_close"><div></div><div></div></div></div>
 		<nav class="menu_nav">
 			<ul>
-				<li><a href="index.php">Home</a></li>
+				<li><a href="index.html">Home</a></li>
 				<li><a href="about.html">About us</a></li>
 				<li><a href="services.html">Services</a></li>
 				<li><a href="doctors.html">Doctors</a></li>
-				<li class="active"><a href="contact.php">Contact us</a></li>
+				<li class="active"><a href="contact.html">Contact us</a></li>
 			</ul>
 		</nav>
 		<div class="menu_extra">
@@ -244,70 +245,14 @@
 				<div class="col-lg-6 intro_col">
 					<div class="intro_form_container">
 						<div class="intro_form_title">Make an Appointment</div>
-
-						<?php
-								if(isset($_POST['sendmail'])){
-									// Import PHPMailer classes into the global namespace
-									// These must be at the top of your script, not inside a function
-									require 'PHPMailerAutoload.php';
-									require 'credential.php';
-
-									$mail = new PHPMailer(true);                              // Passing `true` enables exceptions
-									try {
-									    //Server settings
-											$mail->SMTPOptions = array(
-											    'ssl' => array(
-											        'verify_peer' => false,
-											        'verify_peer_name' => false,
-											        'allow_self_signed' => true
-											    )
-											);
-									    $mail->SMTPDebug = 0;                                 // Enable verbose debug output
-									    $mail->isSMTP();                                      // Set mailer to use SMTP
-									    $mail->Host = 'smtp.gmail.com';  // Specify main and backup SMTP servers
-									    $mail->SMTPAuth = true;                               // Enable SMTP authentication
-									    $mail->Username = EMAIL;                 // SMTP username
-									    $mail->Password = PASS;                           // SMTP password
-									    $mail->SMTPSecure = 'tls';                            // Enable TLS encryption, `ssl` also accepted
-									    $mail->Port = 587;                                    // TCP port to connect to
-
-									    //Recipients
-									    $mail->setFrom(EMAIL, 'QuickCare');
-									    $mail->addAddress('quickcaresurgery@gmail.com');     // Add a recipient               // Name is optional
-									   // $mail->addReplyTo(EMAIL);
-									    //$mail->addCC('cc@example.com');
-									    //$mail->addBCC('bcc@example.com');
-
-									    //Attachments
-									   // $mail->addAttachment('/var/tmp/file.tar.gz');         // Add attachments
-									    //$mail->addAttachment('/tmp/image.jpg', 'new.jpg');    // Optional name
-
-									    //Content
-									    $mail->isHTML(true);                                  // Set email format to HTML
-									    $mail->Subject = 'Appointment';
-									    $mail->Body    = 'Appointment for '. $_POST['name']. ' on the '. $_POST['date'].' contact number is '. $_POST['number']. ' and email is '. $_POST['email'] ;
-									    $mail->AltBody = '';
-
-									    $mail->send();
-									   echo 'Message has been sent <br/>';
-									} catch (Exception $e) {
-									    echo 'Message could not be sent. Mailer Error: ', $mail->ErrorInfo;
-									}
-
-								 }
-
-						?>
-
-
-						<form action="index.php" method="post" class="intro_form" id="intro_form">
+						<form action="index.html" method="post" class="intro_form" id="intro_form">
 							<div class="d-flex flex-row align-items-start justify-content-between flex-wrap">
-								<input type="text"  name="name" class="intro_input" placeholder="Your Name" required="required">
-								<input type="email" name="email" class="intro_input" placeholder="Your E-mail" required="required">
-								<input type="tel"  name="number" class="intro_input" placeholder="Your Phone" required="required">
-
-								<input type="text"  name="date" id="datepicker" class="intro_input datepicker" placeholder="Date" required="required">
+								<input type="text" id="nameField" name="name" class="intro_input" placeholder="Your Name" required="required"/>
+								<input type="email" id="emailField" name="email" class="intro_input" placeholder="Your E-mail" required="required">
+								<input type="tel"  id="numberField" name="number" class="intro_input" placeholder="Your Phone" required="required">
+								<input type="text" id="dateField" name="date" id="datepicker" class="intro_input datepicker" placeholder="Date" required="required">
 							</div>
-							<input type="submit" value="Make an appointment" name="sendmail" class="button button_1 intro_button trans_200" data-toggle="modal" data-target="#exampleModal"/>
+							<input type="submit" value="Make an appointment" onclick ="sendEmail()"  name="sendmail" class="button button_1 intro_button trans_200" data-toggle="modal" data-target="#exampleModal"/>
 						</form>
 					</div>
 				</div>
@@ -523,16 +468,16 @@
 					<div class="col">
 						<div class="footer_bar_content  d-flex flex-md-row flex-column align-items-md-center justify-content-start">
 							<div class="copyright"><!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
-							Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | This template is made by  <a href="https://colorlib.com" target="_blank" style="color:lightblue;">Colorlib </a>and deployed by <a href="https://www.linkedin.com/in/matipamodisane/" style="color:lightblue;"> Matipa Modisane </a>
+							Copyright &copy;<script>document.write(new Date().getFullYear());</script> All rights reserved | Powered by Khozar
 							<!-- Link back to Colorlib can't be removed. Template is licensed under CC BY 3.0. -->
 							</div>
 							<nav class="footer_nav ml-md-auto">
 								<ul class="d-flex flex-row align-items-center justify-content-start">
-									<li><a href="index.php">Home</a></li>
+									<li><a href="index.html">Home</a></li>
 									<li><a href="about.html">About us</a></li>
 									<li><a href="services.html">Services</a></li>
 									<li><a href="doctors.html">Doctors</a></li>
-									<li class="active"><a href="contact.php">Contact us</a></li>
+									<li class="active"><a href="contact.html">Contact us</a></li>
 								</ul>
 							</nav>
 						</div>
