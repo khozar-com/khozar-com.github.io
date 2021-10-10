@@ -32,8 +32,8 @@ let processRequest = function (name, phoneNumber, email, date) {
     let sendMailRequest = {};
     sendMailRequest.fromEmail = "business@khozar.com";
     sendMailRequest.subject = "Appointment booked on quickcaresurgery.co.za";
-    sendMailRequest.toEmail = email;
-    sendMailRequest.bodyHtml = "<p>Patient details</p> <br/> <p1>Name: " + name + "</p1> <br/> <p1>Email: " + email + "</p1> <br/> <p1>Cell number: " + phoneNumber + "</p1> <br/> <p1>Appointment date: " + date + "</p1>"
+    sendMailRequest.toEmail = "malapamodisane@gmail.com";
+    sendMailRequest.bodyHtml = "<p1>Patient details</p1><br/><p1>Name: " + name + "</p1> <br/> <p1>Email: " + email + "</p1> <br/> <p1>Cell number: " + phoneNumber + "</p1> <br/> <p1>Appointment date: " + date + "</p1>"
     return sendMailRequest;
 }
 
