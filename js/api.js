@@ -1,24 +1,24 @@
 async function sendEmail() {
-    let name = document.getElementById('nameField').value;
-    let phoneNumber = document.getElementById('numberField').value;
-    let email = document.getElementById('emailField').value;
-    let date = document.getElementById('dateField').value;
+    var name = document.getElementById('nameField').value;
+    var phoneNumber = document.getElementById('numberField').value;
+    var email = document.getElementById('emailField').value;
+    var date = document.getElementById('dateField').value;
 
     if(validation(name, phoneNumber, email, date) === false)
         return;
 
-    let sendMailRequest = processRequest(name, phoneNumber, email, date);
+    var sendMailRequest = processRequest(name, phoneNumber, email, date);
 
-    let response = postJson("https://sjekhiaq56.execute-api.af-south-1.amazonaws.com/production/sendmail/v1", sendMailRequest, true);
+    var response = postJson("https://sjekhiaq56.execute-api.af-south-1.amazonaws.com/production/sendmail/v1", sendMailRequest, true);
 
     processResponse(response);
 }
 
-let validation = function (name, phoneNumber, email, date) {
-    let isValid = true;
+var validation = function (name, phoneNumber, email, date) {
+    var isValid = true;
     if (name === null || name.length === 0) {
         isValid = false;
-    } else if (phoneNumber === null || phoneNumber.length !== 10) {
+    } else if (phoneNumber === null || phoneNumber.length === 0) {
         isValid = false;
     } else if (email === null || email.length === 0) {
         isValid = false;
@@ -28,8 +28,8 @@ let validation = function (name, phoneNumber, email, date) {
     return isValid;
 }
 
-let processRequest = function (name, phoneNumber, email, date) {
-    let sendMailRequest = {};
+var processRequest = function (name, phoneNumber, email, date) {
+    var sendMailRequest = {};
     sendMailRequest.fromEmail = "business@khozar.com";
     sendMailRequest.subject = "Appointment booked on quickcaresurgery.co.za";
     sendMailRequest.toEmail = "malapamodisane@gmail.com";
@@ -37,18 +37,18 @@ let processRequest = function (name, phoneNumber, email, date) {
     return sendMailRequest;
 }
 
-let postJson = function(url, body, isAsync) {
-    let request = new XMLHttpRequest();
+var postJson = function(url, body, isAsync) {
+    var request = new XMLHttpRequest();
     request.open("POST", url, isAsync);
     request.setRequestHeader('Content-Type', 'application/json');
     request.send(JSON.stringify(body));
     return request;
 }
 
-let processResponse = function(request) {
+var processResponse = function(request) {
     request.onreadystatechange = function() {
         if (request.readyState === XMLHttpRequest.DONE) {
-            let response = JSON.parse(request.responseText);
+            var response = JSON.parse(request.responseText);
             if(response.responseCode === 200) {
                 document.getElementById('nameField').value = "";
                 document.getElementById('numberField').value = "";
