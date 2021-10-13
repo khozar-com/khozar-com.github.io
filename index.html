@@ -15,6 +15,7 @@
 	<link href="plugins/jquery-datepicker/jquery-ui.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="styles/main_styles.css">
 	<link rel="stylesheet" type="text/css" href="styles/responsive.css">
+	<link rel="icon" href="images/quicklogo.png">
 </head>
 <body>
 
@@ -28,7 +29,7 @@
 			<!-- Logo -->
 			<div class="logo">
 				<a href="#">
-					<div style="font-size: 15px;"><img src="images/quicklogo.png" style="height: 55px; width: 300px; margin-top:3%;"></img></div>
+					<div style="font-size: 15px;"><img src="images/quicklogo.png" style="height: 55px; width: 300px; margin-top:3%;"/></div>
 					<div><span></span></div>
 				</a>
 			</div>
@@ -250,9 +251,9 @@
 								<input type="text" id="nameField" name="name" class="intro_input" placeholder="Your Name" required="required"/>
 								<input type="email" id="emailField" name="email" class="intro_input" placeholder="Your E-mail" required="required">
 								<input type="tel"  id="numberField" name="number" class="intro_input" placeholder="Your Phone" required="required">
-								<input type="text" id="dateField" name="date" id="datepicker" class="intro_input datepicker" placeholder="Date" required="required">
+								<input type="date" id="dateField" name="date" id="datepicker" class="intro_input datepicker" placeholder="Date" required="required">
 							</div>
-							<input type="submit" value="Make an appointment" onclick ="sendEmail()"  name="sendmail" class="button button_1 intro_button trans_200"/>
+							<button type='button' onclick ="sendEmail()"  name="sendmail" class="button button_1 intro_button trans_200">Make an appointment</button>
 						</form>
 					</div>
 				</div>

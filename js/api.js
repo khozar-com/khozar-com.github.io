@@ -8,9 +8,7 @@ async function sendEmail() {
         return;
 
     var sendMailRequest = processRequest(name, phoneNumber, email, date);
-
     var response = postJson("https://sjekhiaq56.execute-api.af-south-1.amazonaws.com/production/sendmail/v1", sendMailRequest, true);
-
     processResponse(response);
 }
 
@@ -25,14 +23,25 @@ var validation = function (name, phoneNumber, email, date) {
     } else if (date === null || date.length === 0) {
         isValid = false;
     }
+
+    if(isValid === false) {
+        //Invoke native html validation prompts
+        let introForm = document.getElementById('intro_form');
+        let contactForm = document.getElementById('contact_form');
+        if(introForm)
+            introForm.reportValidity();
+        if(contactForm)
+            contactForm.reportValidity();
+    }
+
     return isValid;
 }
 
 var processRequest = function (name, phoneNumber, email, date) {
     var sendMailRequest = {};
-    sendMailRequest.fromEmail = "business@khozar.com";
+    sendMailRequest.fromEmail = "noreplyemailaddressserver@gmail.com";
     sendMailRequest.subject = "Appointment booked on quickcaresurgery.co.za";
-    sendMailRequest.toEmail = "malapamodisane@gmail.com";
+    sendMailRequest.toEmail = "business@khozar.com";
     sendMailRequest.bodyHtml = "<p1>Patient details</p1><br/><p1>Name: " + name + "</p1> <br/> <p1>Email: " + email + "</p1> <br/> <p1>Cell number: " + phoneNumber + "</p1> <br/> <p1>Appointment date: " + date + "</p1>"
     return sendMailRequest;
 }
@@ -55,8 +64,9 @@ var processResponse = function(request) {
                 document.getElementById('emailField').value = "";
                 document.getElementById('dateField').value = "";
                 alert("Appointment successfully sent")
-            } else
+            } else {
                 alert("Appointment unsuccessfully sent. Please try again.")
+            }
         }
     }
 }
