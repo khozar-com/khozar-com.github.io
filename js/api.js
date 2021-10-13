@@ -41,7 +41,7 @@ var processRequest = function (name, phoneNumber, email, date) {
     var sendMailRequest = {};
     sendMailRequest.fromEmail = name + " <noreplyemailaddressserver@gmail.com>";
     sendMailRequest.subject = "Appointment booked on quickcaresurgery.co.za";
-    sendMailRequest.toEmail = "business@khozar.com";
+    sendMailRequest.toEmail = "drphetlheinc@gmail.com";
     sendMailRequest.bodyHtml = "<p1>Patient details</p1><br/><p1>Name: " + name + "</p1> <br/> <p1>Email: " + email + "</p1> <br/> <p1>Cell number: " + phoneNumber + "</p1> <br/> <p1>Appointment date: " + date + "</p1>"
     return sendMailRequest;
 }
