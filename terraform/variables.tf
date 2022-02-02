@@ -5,12 +5,12 @@ variable "region" {
 
 variable "secretkey" {
   type = string
-  default = "aws_secret_key"
+  default = "secret_key"
 }
 
 variable "accesskey" {
   type = string
-  default="aws_access_key"
+  default="access_key"
 }
 
 variable "k53zoneid" {
@@ -20,5 +20,5 @@ variable "k53zoneid" {
 
 variable "quickcare_bucket_name" {
   type = string
-  default="quickcaresurgery.co.za"
+  default="bucket_name"
 }
