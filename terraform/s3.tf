@@ -12,6 +12,6 @@ resource "aws_s3_bucket" "quick_care_website_bucket" {
   #This is temporary and will be replaced with Ansible
   #Local code needs to be run with aws cli being configured
   provisioner "local-exec" {
-   command = "aws s3 cp ../ s3://${aws_s3_bucket.quick_care_website_bucket.id} --recursive --exclude 'terraform/*' --exclude '.git/*' --exclude '.gitignore' --exclude '.DS_Store'"
+    command = "aws s3 cp ../ s3://${aws_s3_bucket.quick_care_website_bucket.id} --recursive --exclude 'terraform/*' --exclude '.git/*' --exclude '.gitignore' --exclude '.DS_Store'"
   }
 }

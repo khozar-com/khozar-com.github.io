@@ -1,7 +1,7 @@
 resource "aws_acm_certificate" "acm_certificate" {
-  provider = aws.us-east-1
-  domain_name       = "quickcaresurgery.co.za"
-  validation_method = "DNS"
+  provider                  = aws.us-east-1
+  domain_name               = "quickcaresurgery.co.za"
+  validation_method         = "DNS"
   subject_alternative_names = ["www.quickcaresurgery.co.za"]
 }
 
@@ -28,7 +28,7 @@ resource "aws_route53_record" "r53_record" {
 }
 
 resource "aws_acm_certificate_validation" "certificate_validation" {
-  provider = aws.us-east-1
+  provider                = aws.us-east-1
   certificate_arn         = aws_acm_certificate.acm_certificate.arn
   validation_record_fqdns = [for record in aws_route53_record.r53_record : record.fqdn]
 }
