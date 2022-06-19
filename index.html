@@ -4,9 +4,10 @@
 	<title>QuickCare</title>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="description" content="Official QuickCare Surgery Website">
+	<meta name="description" content="Official RH Mathjebeng Casualty Website">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<script type = "text/javascript" src="js/api.js"></script>
+	<script src="https://www.google.com/recaptcha/api.js"></script>
 	<link rel="stylesheet" type="text/css" href="styles/bootstrap-4.1.2/bootstrap.min.css">
 	<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="plugins/OwlCarousel2-2.2.1/owl.carousel.css">
@@ -29,7 +30,7 @@
 			<!-- Logo -->
 			<div class="logo">
 				<a href="#">
-					<div style="font-size: 15px;"><img src="images/quicklogo.png" style="height: 55px; width: 300px; margin-top:3%;"/></div>
+					<div style="font-size: 15px;"><img src="images/casualty/RhQclogo.png" style="height: 58px; width: 250px; margin-top:3%;"/></div>
 					<div><span></span></div>
 				</a>
 			</div>
@@ -47,7 +48,7 @@
 			<div class="header_extra d-flex flex-row align-items-center justify-content-end ml-auto">
 
 				<!-- Work Hourse -->
-				<div class="work_hours">Mo - Sat: 8:00am - 9:00pm</div>
+				<div class="work_hours">Mon - Sun: Open 24 hours</div>
 
 				<!-- Header Phone -->
 				<div class="header_phone">+27 713 318 997</div>
@@ -83,8 +84,7 @@
 			</ul>
 		</nav>
 		<div class="menu_extra">
-			<div class="menu_link">Mo - Fri: 8:00am - 19:00pm</div>
-			<div class="menu_link">	8:00am - 15:00pm </div>
+			<div class="menu_link">Mo - Sun: 24 hours</div>
 			<div class="menu_link">+27 713 318 997</div>
 		</div>
 		<div class="social menu_social">
@@ -97,18 +97,13 @@
 	<!-- Home -->
 
 	<div class="home">
-		<!-- Button trigger modal -->
-
-
-
-
 		<!-- Home Slider -->
 		<div class="home_slider_container" style="max-height: 570px;">
 			<div class="owl-carousel owl-theme home_slider">
 
 				<!-- Slide -->
 				<div class="owl-item">
-					<div class="background_image" style="background-image:url(images/22.jpeg)"></div>
+					<div class="background_image" style="background-image:url(images/casualty/_DSC0829.jpg); background-position: 60% 23%"></div>
 					<div class="home_container">
 						<div class="container">
 							<div class="row">
@@ -133,7 +128,7 @@
 
 				<!-- Slide -->
 				<div class="owl-item">
-					<div class="background_image" style="background-image:url(images/2.jpeg)"></div>
+					<div class="background_image" style="background-image:url(images/casualty/_DSC0869.jpg); background-position: 5% 18%;"></div>
 					<div class="home_container">
 						<div class="container">
 							<div class="row">
@@ -157,7 +152,7 @@
 
 				<!-- Slide -->
 				<div class="owl-item">
-					<div class="background_image" style="background-image:url(images/14.jpeg)"></div>
+					<div class="background_image" style="background-image:url(images/casualty/_DSC0832.jpg); background-position: 5% 59%;"></div>
 					<div class="home_container">
 						<div class="container">
 							<div class="row">
@@ -205,10 +200,10 @@
 					<div class="intro_content">
 						<div class="section_title_container">
 							<div class="section_subtitle"></div>
-							<div class="section_title"><h2>Welcome to our Surgery</h2></div>
+							<div class="section_title"><h2>Welcome to our Casualty</h2></div>
 						</div>
 						<div class="intro_text">
-							<p>As a surgery within HR Mathjebeng Hospital in Welkom, Freestate we aim to produce quality services that put our patients health matters first, regardless of the circumstances. With a team of doctors with over 30 years of experience you can be guaranteed a satisficatory service. </p>
+							<p>As a casualty and surgery within RH Mathjebeng Hospital in Welkom, Freestate we aim to produce quality services that put our patients health matters first, regardless of the circumstances. With a team of doctors with over 30 years of experience you can be guaranteed a satisficatory service. </p>
 						</div>
 						<div class="milestones">
 							<div class="row milestones_row">
@@ -224,7 +219,7 @@
 								<!-- Milestone -->
 								<div class="col-md-4 milestone_col">
 									<div class="milestone">
-										<div class="milestone_counter" data-end-value="3">0</div>
+										<div class="milestone_counter" data-end-value="2" data-sign-before="+">0</div>
 										<div class="milestone_text">Doctors avaliable</div>
 									</div>
 								</div>
@@ -253,6 +248,8 @@
 								<input type="tel"  id="numberField" name="number" class="intro_input" placeholder="Your Phone" required="required">
 								<input type="date" id="dateField" name="date" id="datepicker" class="intro_input datepicker" placeholder="Date" required="required">
 							</div>
+							<div class="g-recaptcha" id="rcaptcha"  data-sitekey="6Lf8cGIfAAAAAF-UgWOMsrR3ThsCjorfzvp5hfs0" style="margin-bottom: 0px;"></div>
+							<span id="captcha" style="color:red" /></span>
 							<button type='button' onclick ="sendEmail()"  name="sendmail" class="button button_1 intro_button trans_200">Make an appointment</button>
 						</form>
 					</div>
@@ -271,7 +268,7 @@
 
 				<!-- Why Choose Us Image -->
 				<div class="col-lg-6 order-lg-1 order-2">
-					<div class="why_image_container">
+					<div class="why_image_container" style="margin-top: 70px;">
 						<div class="why_image"><img src="images/27.jpeg" alt="" style=""></div>
 					</div>
 				</div>
@@ -284,7 +281,7 @@
 							<div class="section_title"><h2>Why choose us?</h2></div>
 						</div>
 						<div class="why_text">
-							<p>Choosing us is one of the best decisions a patient could make as there are a variety of factors that contribute to the success of our surgery.</p>
+							<p>Choosing us is one of the best decisions a patient could make as there are a variety of factors that contribute to the success of our casualty and surgery.</p>
 						</div>
 						<div class="why_list">
 							<ul>
@@ -353,7 +350,7 @@
 	<!-- Extra -->
 
 	<div class="extra">
-		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="images/5.jpeg" data-speed="0.8"></div>
+		<div class="parallax_background parallax-window" data-parallax="scroll" data-image-src="images/casualty/_DSC0774.jpg" data-speed="0.8"></div>
 		<div class="container">
 			<div class="row">
 				<div class="col">
@@ -383,21 +380,6 @@
 		<div class="footer_content">
 			<div class="container">
 				<div class="row">
-
-					<!-- Footer About -->
-					<div class="col-lg-3 footer_col">
-						<div class="footer_about">
-							<div class="footer_logo">
-								<a href="#">
-									<img src="images/quickdarklogo.png" style="height: 65px; width: 200px;  ">
-								</a>
-							</div>
-							<div class="footer_about_text">
-								<p>Fully equipped private surgery in HR Mathjebeng Hospital manned by experienced doctors in medical practice.</p>
-							</div>
-						</div>
-					</div>
-
 					<!-- Footer Contact Info -->
 					<div class="col-lg-3 footer_col">
 						<div class="footer_contact">
@@ -415,7 +397,6 @@
 							<div class="footer_title">Our Locations</div>
 							<ul class="locations_list">
 								<li>
-									<div class="location_title">Freestate</div>
 									<div class="location_text">Power Rd, Reitzpark, Welkom, 9488</div>
 								</li>
 
@@ -429,32 +410,12 @@
 							<div class="footer_title">Operating Hours</div>
 							<ul class="opening_hours_list">
 								<li class="d-flex flex-row align-items-start justify-content-start">
-									<div>Monday:</div>
-									<div class="ml-auto">8:00am - 19:00pm</div>
+									<div>Weekdays:</div>
+									<div class="ml-auto">Open 24 hours</div>
 								</li>
 								<li class="d-flex flex-row align-items-start justify-content-start">
-									<div>Thuesday:</div>
-									<div class="ml-auto">8:00am - 19:00pm</div>
-								</li>
-								<li class="d-flex flex-row align-items-start justify-content-start">
-									<div>Wednesday:</div>
-									<div class="ml-auto">8:00am - 19:00pm</div>
-								</li>
-								<li class="d-flex flex-row align-items-start justify-content-start">
-									<div>Thursday:</div>
-									<div class="ml-auto">8:00am - 19:00pm</div>
-								</li>
-								<li class="d-flex flex-row align-items-start justify-content-start">
-									<div>Friday:</div>
-									<div class="ml-auto">8:00am - 19:00pm</div>
-								</li>
-								<li class="d-flex flex-row align-items-start justify-content-start">
-									<div>Saturday:</div>
-									<div class="ml-auto">8:00am - 15:00pm</div>
-								</li>
-								<li class="d-flex flex-row align-items-start justify-content-start">
-									<div>Sunday:</div>
-									<div class="ml-auto">Closed</div>
+									<div>Weekend:</div>
+									<div class="ml-auto">Open 24 hours</div>
 								</li>
 							</ul>
 						</div>

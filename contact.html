@@ -10,6 +10,7 @@
 	<link href="plugins/font-awesome-4.7.0/css/font-awesome.min.css" rel="stylesheet" type="text/css">
 	<link rel="stylesheet" type="text/css" href="styles/contact.css">
 	<link rel="stylesheet" type="text/css" href="styles/contact_responsive.css">
+	<script src="https://www.google.com/recaptcha/api.js"></script>
 	<script type = "text/javascript" src="js/api.js"></script>
 </head>
 <body>
@@ -42,7 +43,7 @@
 			<div class="header_extra d-flex flex-row align-items-center justify-content-end ml-auto">
 
 				<!-- Work Hourse -->
-				<div class="work_hours">Mo - Sat: 8:00am - 9:00pm</div>
+				<div class="work_hours">Mon - Sun: Open 24 hours</div>
 
 
 				<!-- Header Phone -->
@@ -78,8 +79,7 @@
 			</ul>
 		</nav>
 		<div class="menu_extra">
-			<div class="menu_link">Mo - Fri: 8:00am - 19:00pm</div>
-			<div class="menu_link">	8:00am - 15:00pm  </div>
+			<div class="menu_link">Mon - Sun: Open 24 hours</div>
 			<div class="menu_link">+27 713 318 997</div>
 		</div>
 		<div class="social menu_social">
@@ -125,6 +125,8 @@
 								<input type="tel"  id="numberField" name="number" class="contact_input" placeholder="Your Phone" required="required">
 								<input type="date" id="dateField" name="date" id="datepicker" class="contact_input datepicker" placeholder="Date" required="required">
 							</div>
+							<div class="g-recaptcha" id="rcaptcha"  data-sitekey="6Lf8cGIfAAAAAF-UgWOMsrR3ThsCjorfzvp5hfs0" style="margin-bottom: 0px;"></div>
+							<span id="captcha" style="color:red" /></span>
 							<input type="button" value="Make an appointment" onclick ="sendEmail()"  name="sendmail" class="button button_1 contact_button trans_200" data-toggle="modal" data-target="#exampleModal"></button>
 						</form>
 					</div>
@@ -190,30 +192,12 @@
 		</div>
 	</div>
 
-
-	<!-- Footer -->
-
 	<!-- Footer -->
 
 	<footer class="footer">
 		<div class="footer_content">
 			<div class="container">
 				<div class="row">
-
-					<!-- Footer About -->
-					<div class="col-lg-3 footer_col">
-						<div class="footer_about">
-							<div class="footer_logo">
-								<a href="#">
-									<img src="images/quickdarklogo.png" style="height: 65px; width: 200px;  ">
-								</a>
-							</div>
-							<div class="footer_about_text">
-								<p>Fully equipped private surgery in HR Mathjebeng Hospital manned by experienced doctors in medical practice.</p>
-							</div>
-						</div>
-					</div>
-
 					<!-- Footer Contact Info -->
 					<div class="col-lg-3 footer_col">
 						<div class="footer_contact">
@@ -231,7 +215,6 @@
 							<div class="footer_title">Our Locations</div>
 							<ul class="locations_list">
 								<li>
-									<div class="location_title">Freestate</div>
 									<div class="location_text">Power Rd, Reitzpark, Welkom, 9488</div>
 								</li>
 
@@ -245,32 +228,12 @@
 							<div class="footer_title">Operating Hours</div>
 							<ul class="opening_hours_list">
 								<li class="d-flex flex-row align-items-start justify-content-start">
-									<div>Monday:</div>
-									<div class="ml-auto">8:00am - 19:00pm</div>
+									<div>Weekdays:</div>
+									<div class="ml-auto">Open 24 hours</div>
 								</li>
 								<li class="d-flex flex-row align-items-start justify-content-start">
-									<div>Thuesday:</div>
-									<div class="ml-auto">8:00am - 19:00pm</div>
-								</li>
-								<li class="d-flex flex-row align-items-start justify-content-start">
-									<div>Wednesday:</div>
-									<div class="ml-auto">8:00am - 19:00pm</div>
-								</li>
-								<li class="d-flex flex-row align-items-start justify-content-start">
-									<div>Thursday:</div>
-									<div class="ml-auto">8:00am - 19:00pm</div>
-								</li>
-								<li class="d-flex flex-row align-items-start justify-content-start">
-									<div>Friday:</div>
-									<div class="ml-auto">8:00am - 19:00pm</div>
-								</li>
-								<li class="d-flex flex-row align-items-start justify-content-start">
-									<div>Saturday:</div>
-									<div class="ml-auto">8:00am - 15:00pm</div>
-								</li>
-								<li class="d-flex flex-row align-items-start justify-content-start">
-									<div>Sunday:</div>
-									<div class="ml-auto">Closed</div>
+									<div>Weekend:</div>
+									<div class="ml-auto">Open 24 hours</div>
 								</li>
 							</ul>
 						</div>
