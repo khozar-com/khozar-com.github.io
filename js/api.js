@@ -1,5 +1,5 @@
 const SENDGRID_URL = 'https://api.sendgrid.com/v3/mail/send';
-const SENDGRID_API_KEY = process.env.API_KEY;
+const SENDGRID_API_KEY = process.env.SEND_GRID_API_KEY;
 
 const data = {
     personalizations: [
