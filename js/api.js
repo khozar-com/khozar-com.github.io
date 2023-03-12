@@ -1,5 +1,4 @@
 const SENDGRID_URL = 'https://api.sendgrid.com/v3/mail/send';
-const SENDGRID_API_KEY = process.env.SEND_GRID_API_KEY;
 
 const data = {
     personalizations: [
@@ -24,7 +23,7 @@ async function sendEmail() {
     var email = document.getElementById('emailField').value;
     var date = document.getElementById('dateField').value;
 
-    console.log(SENDGRID_API_KEY)
+    console.log(SEND_GRID_API_KEY)
 
     if(validation(name, phoneNumber, email, date) === false)
         return;
