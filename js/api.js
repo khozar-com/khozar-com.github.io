@@ -1,4 +1,5 @@
 const SENDGRID_URL = 'https://api.sendgrid.com/v3/mail/send';
+const SENDGRID_API_KEY = process.env.SEND_GRID_API_KEY;
 
 const data = {
     personalizations: [
@@ -23,20 +24,15 @@ async function sendEmail() {
     var email = document.getElementById('emailField').value;
     var date = document.getElementById('dateField').value;
 
-    fetch('config.js')
-        .then(response => response.json())
-        .then(config => {
-            var sendGridApiKey = config.apiKey;
-            console.log(sendGridApiKey)
+    console.log(SENDGRID_API_KEY)
 
-            if(validation(name, phoneNumber, email, date) === false)
-                return;
+    if(validation(name, phoneNumber, email, date) === false)
+        return;
 
-            var sendMailRequest = processRequest(name, phoneNumber, email, date);
-            var response = postJson(SENDGRID_URL, sendMailRequest, sendGridApiKey, true);
+    var sendMailRequest = processRequest(name, phoneNumber, email, date);
+    var response = postJson(SENDGRID_URL, sendMailRequest, SENDGRID_API_KEY, true);
 
-            processResponse(response);
-        });
+    processResponse(response);
 }
 
 var captchaSuccess = function () {
