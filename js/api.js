@@ -29,7 +29,7 @@ async function sendEmail() {
         return;
 
     var sendMailRequest = processRequest(name, phoneNumber, email, date);
-    var response = postJson(SENDGRID_URL, sendMailRequest, SENDGRID_API_KEY, true);
+    var response = postJson(SENDGRID_URL, sendMailRequest, SEND_GRID_API_KEY, true);
 
     processResponse(response);
 }
