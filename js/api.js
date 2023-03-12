@@ -89,7 +89,7 @@ var postJson = function(url, body, apiKey, isAsync) {
     const request = new XMLHttpRequest();
     request.open('POST', url, isAsync);
     request.setRequestHeader('Content-Type', 'application/json');
-    request.setRequestHeader('Authorization', `Bearer ${SENDGRID_API_KEY}`);
+    request.setRequestHeader('Authorization', `Bearer ${SEND_GRID_API_KEY}`);
     data.content = [{
         type: 'text/plain',
         value: body,
