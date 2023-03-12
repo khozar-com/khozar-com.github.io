@@ -1,23 +1,48 @@
+const SENDGRID_URL = 'https://api.sendgrid.com/v3/mail/send';
+
+const data = {
+    personalizations: [
+        {
+            to: [
+                {
+                    email: 'business@khozar.com',
+                },
+            ],
+            subject: 'You have received an appointment',
+        },
+    ],
+    from: {
+        email: 'business@khozar.com',
+    },
+    content: [],
+};
+
 async function sendEmail() {
     var name = document.getElementById('nameField').value;
     var phoneNumber = document.getElementById('numberField').value;
     var email = document.getElementById('emailField').value;
     var date = document.getElementById('dateField').value;
 
-    if(validation(name, phoneNumber, email, date) === false)
-        return;
+    fetch('config.js')
+        .then(response => response.json())
+        .then(config => {
+            var sendGridApiKey = config.apiKey;
+            console.log(sendGridApiKey)
 
-    
+            if(validation(name, phoneNumber, email, date) === false)
+                return;
 
-    var sendMailRequest = processRequest(name, phoneNumber, email, date);
-    var response = postJson("https://sjekhiaq56.execute-api.af-south-1.amazonaws.com/production/sendmail/v1", sendMailRequest, true);
-    processResponse(response);
+            var sendMailRequest = processRequest(name, phoneNumber, email, date);
+            var response = postJson(SENDGRID_URL, sendMailRequest, sendGridApiKey, true);
+
+            processResponse(response);
+        });
 }
 
 var captchaSuccess = function () {
     var captchaResponse = grecaptcha.getResponse();
 
-    if(captchaResponse.length == 0) {
+    if(captchaResponse.length === 0) {
             document.getElementById('captcha').innerHTML="You can't leave Captcha Code empty";
             return false;
     } else {
@@ -49,11 +74,9 @@ var validation = function (name, phoneNumber, email, date) {
             contactForm.reportValidity();
     }
 
-    if(captchaSuccess() == false) {
+    if(captchaSuccess() === false) {
         isValid = false;
     }
-
-    console.log()
 
     return isValid;
 }
@@ -67,11 +90,16 @@ var processRequest = function (name, phoneNumber, email, date) {
     return sendMailRequest;
 }
 
-var postJson = function(url, body, isAsync) {
-    var request = new XMLHttpRequest();
-    request.open("POST", url, isAsync);
+var postJson = function(url, body, apiKey, isAsync) {
+    const request = new XMLHttpRequest();
+    request.open('POST', url, isAsync);
     request.setRequestHeader('Content-Type', 'application/json');
-    request.send(JSON.stringify(body));
+    request.setRequestHeader('Authorization', `Bearer ${SENDGRID_API_KEY}`);
+    data.content = [{
+        type: 'text/plain',
+        value: body,
+    }]
+    request.send(JSON.stringify(data));
     return request;
 }
 
@@ -79,7 +107,7 @@ var processResponse = function(request) {
     request.onreadystatechange = function() {
         if (request.readyState === XMLHttpRequest.DONE) {
             var response = JSON.parse(request.responseText);
-            if(response.responseCode === 200) {
+            if(response.responseCode === 202) {
                 document.getElementById('nameField').value = "";
                 document.getElementById('numberField').value = "";
                 document.getElementById('emailField').value = "";
@@ -91,3 +119,4 @@ var processResponse = function(request) {
         }
     }
 }
+
